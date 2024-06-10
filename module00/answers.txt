@@ -1,0 +1,5 @@
+'conda list' || 'pip list'
+conda search -i numpy
+conda remove
+conda install numpy
+pip freeze > requirements.txt
