@@ -6,7 +6,7 @@
 #    By: tjoyeux <tjoyeux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/11 18:09:09 by tjoyeux           #+#    #+#              #
-#    Updated: 2024/06/11 19:22:40 by tjoyeux          ###   ########.fr        #
+#    Updated: 2024/06/12 09:37:00 by tjoyeux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,11 @@ class Recipe:
 		"""Your code here"""
 		return txt	
 	def _validate_name(self, name):
+		# AUTRE MANIERE DE FAIRE
+		# try :
+		# 	assert isinstance(name, str), "name should be String"
+		# except AssertionError as message:
+		# 	print (message)
 		if not isinstance(name, str):
 			raise ValueError("name should be String")
 		return (name)
