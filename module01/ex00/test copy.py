@@ -6,7 +6,7 @@
 #    By: tjoyeux <tjoyeux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/12 11:25:32 by tjoyeux           #+#    #+#              #
-#    Updated: 2024/06/12 16:54:18 by tjoyeux          ###   ########.fr        #
+#    Updated: 2024/06/12 13:37:36 by tjoyeux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,16 @@ def test_valid_recipe():
     assert recipe.recipe_type == 'lunch'
 
 def test_valid_book():
-	my_book = Book("Italian food")
+	my_book = Book(
+		"Italian food", 
+		datetime(1990, 1, 1), 
+		datetime(2018, 1, 1), 
+		{'starter':'pasta', 'lunch':'pizza'}
+	)
 	assert my_book.name == "Italian food"
+	assert my_book.last_update == datetime(1990, 1, 1)
+	assert my_book.creation_date == datetime(2018, 1, 1)
+	assert my_book.recipes_list == {'starter':'pasta', 'lunch':'pasta'}
     
 def test_recipe_empty_name():
     with pytest.raises(ValueError, match="name shouldn´t be empty"):
@@ -45,11 +53,11 @@ def test_recipe_invalid_name():
 
 def test_book_empty_name():
 	with pytest.raises(ValueError, match= "name shouldn´t be empty"):
-		Book("")
+		Book("", datetime(1990, 1, 1), datetime(2018, 1, 1), {'starter':'pasta', 'lunch':'pasta'})
 
 def test_book_invalid_name():
 	with pytest.raises(ValueError, match= "name should be String"):
-		Book(5)
+		Book(5 , datetime(1990, 1, 1), datetime(2018, 1, 1), {'starter':'pasta', 'lunch':'pasta'})
 		
 def test_invalid_cooking_lvl():
     with pytest.raises(ValueError, match="cooking_lvl between 1 and 5"):
@@ -73,23 +81,5 @@ def test_invalid_recipe_type():
 
 
 if __name__ == "__main__":
-    pizza = Recipe("pizza", 3, 10, ['tomates', 'pate', 'fromage'], '', 'lunch')
-    pasta = Recipe("pasta", 5, 20, ['pates', 'sauce'], 'servir al dente', 'lunch')
-    tiramisu = Recipe("tiramisu", 1, 30, ['cafe', 'creme fraiche', 'sucre'], 'accompagner d\'un bon cafe', 'dessert')
-    
-    print("---Recettes---\n")
-    print(pizza)
-    print(pasta)
-    print(tiramisu)
-    
-    book = Book('Italian')
-    book.add_recipe(pizza)
-    book.add_recipe(pasta)
-    book.add_recipe(tiramisu)
-    
-    print("---Livre de recettes---\n")
-    print(book)
-    
-    print("---Test des methodes---\n")
     pytest.main(["-v", "test.py"])
 #to_print = str(myRecipe)

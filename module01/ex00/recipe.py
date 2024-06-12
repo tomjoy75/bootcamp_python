@@ -77,8 +77,8 @@ class Recipe:
 			raise ValueError("recipe_type should be starter/lunch/dessert")
 		return (type)
 			
-	def display_info(self):
-		print(f"name : {self.name}\nlevel : {self.cooking_lvl}")
+##	def display_info(self):
+##		print(f"name : {self.name}\nlevel : {self.cooking_lvl}")
 		
 if __name__ == "__main__":
 	try:
